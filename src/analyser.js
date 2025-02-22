@@ -2,7 +2,7 @@
 //    document.body.addEventListener("click", init);
 //});
 
-async function init() {
+export function init() {
   const audioCtx = new AudioContext();
   let source;
   let stream;
