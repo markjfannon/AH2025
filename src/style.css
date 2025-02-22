@@ -100,15 +100,16 @@ padding:10px;
   margin-top:5px;
 }
 button {
-  width:190px;
-  height:35px;
+  width:50%;
+  font-family: 'Courier New', monospace;
+  font-size:11px;
   background-color:var(--mid-color);
   color:var(--dkest-color);
   font-weight:bold;
-  border:none;
   margin-top:5px;
-  margin-right:5px;
-}
+  margin:5px;
+  padding:5px;
+  }
 button a {
  color:var(--accent);
  font-weight:bold;
