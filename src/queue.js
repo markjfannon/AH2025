@@ -37,7 +37,21 @@ export function setupQueue(element) {
 
     const loadFileButton = document.querySelector("#load-file-button");
     loadFileButton.onclick = async function () {
-        const file = await open({ multiple: false, directory: false });
-        addSong(file);
+        const file = await open({
+            multiple: false,
+            directory: false,
+            filters: [
+                {
+                    extensions: ["mp3", "wav", "flac", "m4a", "ogg", "aac"],
+                    name: "Audio Files",
+                },
+            ],
+        });
+
+        if (file !== null) {
+            addSong(file);
+        }
     };
+
+    return { addSong, removeSong };
 }
