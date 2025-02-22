@@ -10,7 +10,7 @@ export function setupCounter(element) {
   }
   element.addEventListener('click', () => 
     invoke('read_file', {filePath: "../src/assets/alley.png"})
-    .then((data) => console.log(data))
+    .then((data) => {console.log(data); setCounter(counter+1)})
   )
   setCounter(0)
 }
