@@ -2,13 +2,33 @@ export function setupQueue(element) {
     let queue = ["Haha", "I love haskell", "the mowing song", "untitled song", "Euan - The Sways"];
     const ol = document.createElement("ol");
 
-    for (let i = 0; i < queue.length; i++) {
-        const p = document.createElement("li");
-        
-        p.innerText = queue[i];
-        ol.appendChild(p);
+    function addSong(trackTitle) {
+        const li = document.createElement("li");
+
+        queue.push(trackTitle);
+        li.innerText = trackTitle;
+
+        ol.appendChild(li);
     }
 
-    element.appendChild(ol);
+    function removeSong() {
+        queue.shift();
 
+        ol.innerHTML = "";
+
+        renderList();
+    }
+
+    function renderList() {
+        for (let i = 0; i < queue.length; i++) {
+            const li = document.createElement("li");
+            
+            li.innerText = queue[i];
+            ol.appendChild(li);
+        }
+    }
+
+    
+    renderList();
+    element.appendChild(ol);
 }
