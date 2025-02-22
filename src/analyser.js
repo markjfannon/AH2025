@@ -1,6 +1,6 @@
-document.addEventListener("DOMContentLoaded", function() {
-    document.body.addEventListener("click", init);
-});
+//document.addEventListener("DOMContentLoaded", function() {
+//    document.body.addEventListener("click", init);
+//});
 
 async function init() {
   const audioCtx = new AudioContext();
