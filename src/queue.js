@@ -1,5 +1,7 @@
+import { open } from "@tauri-apps/plugin-dialog";
+
 export function setupQueue(element) {
-    let queue = ["Haha", "I love haskell", "the mowing song", "untitled song", "Euan - The Sways"];
+    let queue = [];
     const ol = document.createElement("ol");
 
     function addSong(trackTitle) {
@@ -12,23 +14,30 @@ export function setupQueue(element) {
     }
 
     function removeSong() {
-        queue.shift();
+        const song = queue.shift();
 
         ol.innerHTML = "";
 
         renderList();
+
+        return song;
     }
 
     function renderList() {
         for (let i = 0; i < queue.length; i++) {
             const li = document.createElement("li");
-            
+
             li.innerText = queue[i];
             ol.appendChild(li);
         }
     }
 
-    
     renderList();
     element.appendChild(ol);
+
+    const loadFileButton = document.querySelector("#load-file-button");
+    loadFileButton.onclick = async function () {
+        const file = await open({ multiple: false, directory: false });
+        addSong(file);
+    };
 }
