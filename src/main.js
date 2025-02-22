@@ -5,25 +5,43 @@ import alley from './assets/alley.png'
 import { setupCounter } from './counter.js'
 
 document.querySelector('#app').innerHTML = `
-  <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-      <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
-    </a>
-    <h1>Hello :3</h1>
-    <p>I love nonbinary sleeping accomodations!</p>
-    <a href="https://wiby.me/surprise" target="_blank">
-      <img src="${alley}" class="logo vanilla" alt="JavaScript logo" />
-    </a>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite logo to learn more
-    </p>
-  </div>
+<body class="scroll">
+        <div id="container">
+
+            <div id="header">
+                <h1 class="title">⋆⭒˚.⋆୨୧ Meow Jam ୨୧⋆.˚⭒⋆</h1>
+            </div>
+
+            <div id="wrapper">
+                <div id="two-boxes">
+
+                    <div class="box-one scroll">
+
+                       <div class="section-title"> MEOW!!!!</div>
+
+                       <div class="content">
+                          <p>this is the sidebar!!1!</p>
+                       </div>
+
+                    </div> 
+
+                    <div class="box-two scroll">
+                        <div class="section-title"> MEOW!!!!</div>
+
+                        <div class="content">
+                            <p>this is the other stuff!!1!</p>
+                         </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+            <div id="footer">
+                <p>❤ Made with love by Lana, Alice, Mark, and Peter ❤</p>
+            </div>
+        </div>
+   </body>
 `
 
 setupCounter(document.querySelector('#counter'))
