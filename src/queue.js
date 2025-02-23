@@ -15,6 +15,9 @@ export function setupQueue(element) {
 
     function removeSong() {
         const song = queue.shift();
+        if (song === undefined) {
+            return null;
+        }
 
         ol.innerHTML = "";
 
