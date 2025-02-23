@@ -14,7 +14,6 @@ export function setupAudio() {
     };
 
     function playFile(filename) {
-        console.log(audioPlayer);
         if (audioPlayer !== undefined) {
             audioPlayer.stop();
             audioPlayer.remove();
