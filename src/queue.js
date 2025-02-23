@@ -8,13 +8,16 @@ export function setupQueue(element) {
         const li = document.createElement("li");
 
         queue.push(trackTitle);
-        li.innerText = trackTitle;
+        li.innerText = trackTitle.split(/(\\|\/)/g).pop();;
 
         ol.appendChild(li);
     }
 
     function removeSong() {
         const song = queue.shift();
+        if (song === undefined) {
+            return null;
+        }
 
         ol.innerHTML = "";
 
