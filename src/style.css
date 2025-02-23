@@ -23,7 +23,7 @@ color:var(--accent);
 font-weight:bold;
 }
 #container {
-  max-width:900px;
+  max-width: 80%;
   margin:0 auto;
   margin-top:15px;
   height:100%;
@@ -150,7 +150,7 @@ background-color:var(--dkest-color);
 color:var(--lt-color);
 font-size:10px;
 }
-@media only screen and (max-width: 860px) {
+@media only screen and (max-width: 75%) {
   html, body {
       overflow:visible;
  }
@@ -182,6 +182,38 @@ font-size:10px;
   position: absolute;
 
 }
+
+#header {
+  position: relative; /* Ensures absolute elements are positioned relative to this */
+  height: 90px; /* Fixed height as per your requirement */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+h1.title {
+  position: absolute;
+  width: max-content;
+  font-size: 2em;
+  text-align: center;
+  left: 50%;
+  transform: translateX(-50%); /* Centers the title */
+}
+
+.gatto {
+  position: absolute;
+  height: 90px; /* Match header height */
+  width: auto; /* Maintain aspect ratio */
+}
+
+.gatto.left {
+  left: 0;
+}
+
+.gatto.right {
+  right: 0;
+}
+
 
 .visualizer {
   height: 80%;
