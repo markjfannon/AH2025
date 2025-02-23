@@ -108,7 +108,7 @@ export function setupAudio() {
                 }
 
                 const d = star.z / 1000.0;
-                const b = 1 - d * d;
+                const b = 1 - Math.pow(d, 1.5);
 
                 putPixel(x, y, b);
             }
