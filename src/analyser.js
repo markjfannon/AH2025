@@ -1,5 +1,6 @@
 import { convertFileSrc } from "@tauri-apps/api/core";
-import p5 from "p5";
+import "https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"
+import "https://cdn.jsdelivr.net/npm/p5@1.9.0/lib/addons/p5.sound.min.js";
 
 export function setupAudio() {
     let p;
@@ -10,22 +11,29 @@ export function setupAudio() {
             instance.noCanvas();
         };
 
-        p = instance;
+        p = instance; 
     };
 
     function playFile(filename) {
+        console.log("In playFile ");
+
         if (audioPlayer !== undefined) {
             audioPlayer.stop();
-            audioPlayer.remove();
         }
-        audioPlayer = p.createAudio(convertFileSrc(filename));
-        audioPlayer.loop();
+
+        audioPlayer = new p5.SoundFile(convertFileSrc(filename), () => {
+            console.log("Sound loaded, playing");
+            audioPlayer.loop();
+        });
+
+        console.log(audioPlayer);
     }
 
     new p5(sketch);
 
     return { playFile };
 }
+
 
 export function init() {
     const audioCtx = new AudioContext();

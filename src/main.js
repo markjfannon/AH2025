@@ -8,7 +8,9 @@ const { removeSong } = setupQueue(document.querySelector("#queue"));
 
 document.getElementById("play-button").addEventListener("click", () => {
     const filename = removeSong();
+    debugger;
     if (filename !== null) {
+        console.log("Play " + filename)
         playFile(filename);
     }
 });
