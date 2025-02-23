@@ -14,6 +14,11 @@ export function setupAudio() {
     };
 
     function playFile(filename) {
+        console.log(audioPlayer);
+        if (audioPlayer !== undefined) {
+            audioPlayer.stop();
+            audioPlayer.remove();
+        }
         audioPlayer = p.createAudio(convertFileSrc(filename));
         audioPlayer.loop();
     }
