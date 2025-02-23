@@ -13,8 +13,8 @@
     "windows": [
       {
         "title": "Meow Jam",
-        "width": 900,
-        "height": 700,
+        "width": 2000,
+        "height": 2000,
         "resizable": true,
         "fullscreen": false
       }

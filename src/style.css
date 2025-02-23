@@ -11,7 +11,7 @@ html, body {
   padding:0;
   height:100%;
   font-family: 'Courier New', monospace;
-  font-size:11px;
+  font-size:20px;
   background-image:url('https://neothemes.neocities.org/images/roses-bg.gif');
   background-repeat:repeat;
   color:var(--dkest-color);
@@ -44,7 +44,7 @@ h2, h4, h6 {
   border:1px solid var(--dkest-color);
 }
 .title {
-  font-size:35px;
+  font-size:40px;
   text-align:center;
   font-style:italic;
 }
@@ -88,7 +88,7 @@ padding:10px;
   padding-bottom:5px;
   background-color:var(--mid-color);
   color:var(--dkest-color);
-  font-size:12px;
+  font-size:25px;
 }
 .nav-wrapper {
   display:flex;
@@ -102,7 +102,7 @@ padding:10px;
 button {
   width:50%;
   font-family: 'Courier New', monospace;
-  font-size:11px;
+  font-size:20px;
   background-color:var(--mid-color);
   color:var(--dkest-color);
   font-weight:bold;
@@ -139,7 +139,7 @@ font-weight:bold;
 #footer p {
   background-color:white;
   display:block;
-  max-width: 350px;
+  max-width: 700px;
   margin:0 auto;
   margin-top:5px;
   margin-bottom:5px;
@@ -148,7 +148,7 @@ font-weight:bold;
 textarea {
 background-color:var(--dkest-color);
 color:var(--lt-color);
-font-size:10px;
+font-size:20px;
 }
 @media only screen and (max-width: 75%) {
   html, body {
@@ -194,7 +194,7 @@ font-size:10px;
 h1.title {
   position: absolute;
   width: max-content;
-  font-size: 2em;
+  font-size: 40px;
   text-align: center;
   left: 50%;
   transform: translateX(-50%); /* Centers the title */
