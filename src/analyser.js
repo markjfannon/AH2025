@@ -8,6 +8,7 @@ export function setupAudio() {
     let fft;
     let canvas;
     let ctx;
+    let stars;
     let pieces = 12;
     let radiusFactor = 0.2; // Controls how large the visualisation appears
 
@@ -19,6 +20,7 @@ export function setupAudio() {
 
     const sketch = (instance) => {
         instance.setup = () => {
+            stars = makeStars(10000);
             canvas = document.getElementById("visualizer");
             if (!canvas) {
                 console.error("Canvas with ID 'visualizer' not found!");
@@ -50,13 +52,67 @@ export function setupAudio() {
             instance.redraw(); // Force a redraw after resizing
         }
 
+        const makeStars = count => {
+            const out = [];
+            for (let i = 0; i < count; i++) {
+              const s = {
+                x: Math.random() * 1600 - 800,
+                y: Math.random() * 900 - 450,
+                z: Math.random() * 1000
+              };
+              out.push(s);
+            }
+            return out;
+          };
+
+          const putPixel = (x, y, brightness) => {
+            const intensity = brightness * 255;
+            const rgb = "rgb(" + intensity + "," + intensity + "," + intensity + ")";
+            ctx.fillStyle = rgb;
+            ctx.fillRect(x, y, 1, 1);
+          };
+          
+          const moveStars = distance => {
+            const count = stars.length;
+            for (var i = 0; i < count; i++) {
+              const s = stars[i];
+              s.z -= distance;
+              while (s.z <= 1) {
+                s.z += 1000;
+              }
+            }
+          };
+
         instance.draw = () => {
             if (!ctx) return;
+            moveStars(instance.deltaTime * 0.1);
 
             // Clear the canvas each frame
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             ctx.fillStyle = bgColor;
             ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            const cx = canvas.width / 2;
+            const cy = canvas.height / 2;
+            const w = canvas.width;
+            const h = canvas.height;
+            const count = stars.length;
+            for (var i = 0; i < count; i++) {
+                const star = stars[i];
+
+                const x = cx + star.x / (star.z * 0.001);
+                const y = cy + star.y / (star.z * 0.001);
+
+                if (x < 0 || x >= w || y < 0 || y >= h) {
+                continue;
+                }
+
+                const d = star.z / 1000.0;
+                const b = 1 - d * d;
+
+                putPixel(x, y, b);
+            }
+
 
             fft.analyze();
 
@@ -136,3 +192,5 @@ export function setupAudio() {
 
     return { playFile };
 }
+
+
