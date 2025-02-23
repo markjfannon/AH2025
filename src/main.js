@@ -1,4 +1,4 @@
-import { init, setupAudio } from "./analyser";
+import { setupAudio } from "./analyser";
 import { initOneko } from "./oneko";
 import { setupQueue } from "./queue";
 import "./style.css";
