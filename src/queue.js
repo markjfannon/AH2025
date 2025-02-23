@@ -8,7 +8,7 @@ export function setupQueue(element) {
         const li = document.createElement("li");
 
         queue.push(trackTitle);
-        li.innerText = trackTitle.split(/(\\|\/)/g).pop();;
+        li.innerText = trackTitle.split(/(\\|\/)/g).pop();
 
         ol.appendChild(li);
     }
@@ -30,7 +30,8 @@ export function setupQueue(element) {
         for (let i = 0; i < queue.length; i++) {
             const li = document.createElement("li");
 
-            li.innerText = queue[i];
+            li.innerText = queue[i].split(/(\\|\/)/g).pop();
+
             ol.appendChild(li);
         }
     }
