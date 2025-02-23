@@ -31,7 +31,7 @@ export function initOneko() {
       nekoEl.style.top = `${nekoPosY - 16}px`;
       nekoEl.style.zIndex = 2147483647;
   
-      let nekoFile = "./assets/oneko.gif";
+      let nekoFile = "./oneko.gif";
       nekoEl.style.backgroundImage = `url(${nekoFile})`;
   
       document.body.appendChild(nekoEl);

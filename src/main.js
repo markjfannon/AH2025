@@ -1,6 +1,6 @@
 import { init } from "./analyser";
 import { setupQueue } from "./queue";
-import { initOneko } from "./oneko"; // Import Oneko
+import { initOneko } from "./oneko";
 import "./style.css";
 
 const { addSong, removeSong } = setupQueue(document.querySelector("#queue"));
