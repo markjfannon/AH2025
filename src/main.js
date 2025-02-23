@@ -3,6 +3,8 @@ import { initOneko } from "./oneko";
 import { setupQueue } from "./queue";
 import "./style.css";
 
+
+
 const { playFile } = setupAudio();
 const { removeSong } = setupQueue(document.querySelector("#queue"));
 

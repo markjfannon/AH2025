@@ -19,17 +19,14 @@ export function setupAudio() {
 
     const sketch = (instance) => {
         instance.setup = () => {
-            canvas = document.getElementById("visualizer");
-            if (!canvas) {
-                console.error("Canvas with ID 'visualizer' not found!");
-                return;
-            }
+            canvas = instance.createCanvas(600, 600);
+            canvas.parent("vis-div");
 
-            ctx = canvas.getContext("2d");
-            if (!ctx) {
-                console.error("Failed to get 2D rendering context");
-                return;
-            }
+            // ctx = canvas.getContext("2d");
+            // if (!ctx) {
+            //     console.error("Failed to get 2D rendering context");
+            //     return;
+            // }
 
             resizeCanvas(); // Set initial size
             fft = new p5.FFT();
@@ -50,13 +47,10 @@ export function setupAudio() {
             instance.redraw(); // Force a redraw after resizing
         }
 
+        
         instance.draw = () => {
-            if (!ctx) return;
-
-            // Clear the canvas each frame
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = bgColor;
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            instance.clear();
+            instance.background(bgColor);
 
             fft.analyze();
 
@@ -64,58 +58,59 @@ export function setupAudio() {
             const treble = fft.getEnergy(50, 110);
             const mid = fft.getEnergy("mid");
 
-            // Scale the visualisation dynamically based on canvas size
-            const radius = Math.min(canvas.width, canvas.height) * radiusFactor;
-            const centerX = canvas.width / 2;
-            const centerY = canvas.height / 2;
+            // Dynamically scale radius based on canvas size
+            const radius = Math.min(instance.width, instance.height) * radiusFactor;
+            const centerX = instance.width / 2;
+            const centerY = instance.height / 2;
 
-            const mapMid = p.map(mid, 0, 255, -radius, radius);
-            const scaleMid = p.map(mid, 0, 255, 1, 1.5);
-            const mapTreble = p.map(treble, 0, 255, -radius / 2, radius * 2);
-            const scaleTreble = p.map(treble, 0, 255, 0.5, 2);
-            const mapbass = p.map(bass, 0, 255, 0, radius);
-            const scalebass = p.map(bass, 0, 255, 0, 0.8);
+            const mapMid = instance.map(mid, 0, 255, -radius, radius);
+            const scaleMid = instance.map(mid, 0, 255, 1, 1.5);
+            const mapTreble = instance.map(treble, 0, 255, -radius / 2, radius * 2);
+            const scaleTreble = instance.map(treble, 0, 255, 0.5, 2);
+            const mapbass = instance.map(bass, 0, 255, 0, radius);
+            const scalebass = instance.map(bass, 0, 255, 0, 0.8);
 
-            ctx.save();
-            ctx.translate(centerX, centerY);
+            instance.translate(centerX, centerY);
 
             for (let i = 0; i < pieces; i++) {
-                ctx.rotate((Math.PI * 2) / pieces);
+                instance.rotate(instance.TWO_PI / pieces);
+                instance.noFill();
 
                 /*----------  BASS  ----------*/
-                ctx.beginPath();
-                ctx.fillStyle = bassColor[0];
-                const bassX = mapbass * Math.cos(p.frameCount * 0.03);
-                const bassY = mapbass * Math.sin(p.frameCount * 0.03);
-                ctx.arc(bassX, bassY, 6, 0, Math.PI * 2);
-                ctx.fill();
-
-                ctx.beginPath();
-                ctx.fillStyle = bassColor[1];
-                ctx.arc(bassX * 0.8, bassY * 0.8, 4, 0, Math.PI * 2);
-                ctx.fill();
+                instance.push();
+                instance.strokeWeight(6);
+                instance.stroke(bassColor[0]);
+                instance.rotate(instance.frameCount * 0.03); // Bass rotation effect
+                instance.point(mapbass, radius / 2);
+                instance.stroke(bassColor[1]);
+                instance.strokeWeight(3);
+                instance.ellipse(mapbass, radius / 2, 8, 8); // Bass as a moving dot
+                instance.pop();
 
                 /*----------  MID  ----------*/
-                ctx.beginPath();
-                ctx.fillStyle = midColor;
-                const midX = mapMid * Math.cos(-p.frameCount * 0.02);
-                const midY = mapMid * Math.sin(-p.frameCount * 0.02);
-                ctx.arc(midX, midY, 5, 0, Math.PI * 2);
-                ctx.fill();
+                instance.push();
+                instance.stroke(midColor);
+                instance.strokeWeight(4);
+                instance.rotate(-instance.frameCount * 0.02); // Mid rotates slower
+                instance.ellipse(mapMid, radius, 6, 6);
+                instance.pop();
 
                 /*----------  TREBLE  ----------*/
-                ctx.beginPath();
-                ctx.fillStyle = trembleColor;
-                const trebleX = mapTreble * Math.cos(p.frameCount * 0.05);
-                const trebleY = mapTreble * Math.sin(p.frameCount * 0.05);
-                ctx.arc(trebleX, trebleY, 3, 0, Math.PI * 2);
-                ctx.fill();
+                instance.push();
+                instance.stroke(trembleColor);
+                instance.strokeWeight(4);
+                instance.scale(scaleTreble);
+                instance.rotate(instance.frameCount * 0.05); // Treble spins faster
+                instance.ellipse(-100, radius / 2, 4, 4);
+                instance.ellipse(100, radius / 2, 4, 4);
+                instance.pop();
             }
+        };
 
-            ctx.restore();
+        instance.windowResized = () => {
+            instance.resizeCanvas(instance.windowWidth, instance.windowHeight);
         };
     };
-
     function playFile(filename) {
         console.log("In playFile ");
 
@@ -131,8 +126,8 @@ export function setupAudio() {
 
         console.log(audioPlayer);
     }
-
-    p = new p5(sketch);
+    //canvas = document.getElementById("visualizer");
+    p = new p5(sketch, canvas);
 
     return { playFile };
 }
