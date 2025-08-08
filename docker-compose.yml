@@ -1,0 +1,10 @@
+services:
+  meowjam:
+    image: caddy:2-alpine
+    container_name: meowjam
+    ports:
+      - "4242:80"
+    volumes:
+      - ./dist:/usr/share/caddy:ro
+      - ./caddy_data:/data
+    restart: unless-stopped

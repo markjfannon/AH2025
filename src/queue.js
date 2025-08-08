@@ -1,14 +1,12 @@
-import { open } from "@tauri-apps/plugin-dialog";
-
 export function setupQueue(element) {
     let queue = [];
     const ol = document.createElement("ol");
 
-    function addSong(trackTitle) {
+    function addSong(file) {
         const li = document.createElement("li");
 
-        queue.push(trackTitle);
-        li.innerText = trackTitle.split(/(\\|\/)/g).pop();
+        queue.push(file);
+        li.innerText = file.name;
 
         ol.appendChild(li);
     }
@@ -20,7 +18,6 @@ export function setupQueue(element) {
         }
 
         ol.innerHTML = "";
-
         renderList();
 
         return song;
@@ -29,9 +26,7 @@ export function setupQueue(element) {
     function renderList() {
         for (let i = 0; i < queue.length; i++) {
             const li = document.createElement("li");
-
-            li.innerText = queue[i].split(/(\\|\/)/g).pop();
-
+            li.innerText = queue[i].name;
             ol.appendChild(li);
         }
     }
@@ -40,21 +35,22 @@ export function setupQueue(element) {
     element.appendChild(ol);
 
     const loadFileButton = document.querySelector("#load-file-button");
-    loadFileButton.onclick = async function () {
-        const file = await open({
-            multiple: false,
-            directory: false,
-            filters: [
-                {
-                    extensions: ["mp3", "wav", "flac", "m4a", "ogg", "aac"],
-                    name: "Audio Files",
-                },
-            ],
-        });
 
-        if (file !== null) {
-            addSong(file);
-        }
+    const fileInput = document.createElement("input");
+    fileInput.type = "file";
+    fileInput.accept = ".mp3,.wav,.flac,.m4a,.ogg,.aac";
+    fileInput.style.display = "none";
+    document.body.appendChild(fileInput);
+
+    loadFileButton.onclick = async function () {
+        fileInput.click();
+
+        fileInput.onchange = () => {
+            if (fileInput.files && fileInput.files.length > 0) {
+                const file = fileInput.files[0];
+                addSong(file);
+            }
+        };
     };
 
     return { addSong, removeSong };
