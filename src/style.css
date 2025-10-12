@@ -308,3 +308,14 @@ h1.title {
     top: 10%;
     left: 10%;
 }
+
+.instructions {
+    font-size: 1em;
+    color: var(--dkest-color);
+    background: var(--lt-color);
+    border: 1px solid var(--mid-color);
+    padding: 6px 12px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    text-align: center;
+}

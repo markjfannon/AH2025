@@ -35,22 +35,22 @@ export function setupQueue(element) {
     element.appendChild(ol);
 
     const loadFileButton = document.querySelector("#load-file-button");
-
-    const fileInput = document.createElement("input");
-    fileInput.type = "file";
-    fileInput.accept = ".mp3,.wav,.flac,.m4a,.ogg,.aac";
-    fileInput.style.display = "none";
-    document.body.appendChild(fileInput);
+    const fileInput = document.getElementById("file-input");
 
     loadFileButton.onclick = async function () {
         fileInput.click();
+    };
 
-        fileInput.onchange = () => {
-            if (fileInput.files && fileInput.files.length > 0) {
-                const file = fileInput.files[0];
-                addSong(file);
+    fileInput.onchange = () => {
+        if (fileInput.files && fileInput.files.length > 0) {
+            const file = fileInput.files[0];
+            addSong(file);
+            // Hide instructions when a file is uploaded
+            const instructions = document.getElementById("instructions");
+            if (instructions) {
+                instructions.style.display = "none";
             }
-        };
+        }
     };
 
     return { addSong, removeSong };
