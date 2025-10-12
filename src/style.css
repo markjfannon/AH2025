@@ -1,227 +1,310 @@
 :root {
-  --dk-color:#bf776b;
-  --mid-color:#f2b1a4;
-  --lt-color:#ffe8e3;
-  --dkest-color:#8e534a;
-   --accent:#226051;
+    --dk-color: #bf776b;
+    --mid-color: #f2b1a4;
+    --lt-color: #ffe8e3;
+    --dkest-color: #8e534a;
+    --accent: #226051;
 }
-html, body {
-  margin:0;
-  padding-top:25px;
-  padding:0;
-  height:100%;
-  font-family: 'Courier New', monospace;
-  font-size:20px;
-  background-image:url('https://neothemes.neocities.org/images/roses-bg.gif');
-  background-repeat:repeat;
-  color:var(--dkest-color);
-  padding:1px;
-  overflow-y:hidden;
+
+html,
+body {
+    margin: 0;
+    padding-top: 25px;
+    padding: 0;
+    height: 100%;
+    font-family: 'Courier New', monospace;
+    font-size: 20px;
+    background-image: url('https://neothemes.neocities.org/images/roses-bg.gif');
+    background-repeat: repeat;
+    color: var(--dkest-color);
+    padding: 1px;
+    overflow-y: hidden;
 }
+
 body a {
-color:var(--accent);
-font-weight:bold;
+    color: var(--accent);
+    font-weight: bold;
 }
+
 #container {
-  max-width: 80%;
-  margin:0 auto;
-  margin-top:15px;
-  height:100%;
+    max-width: 80%;
+    margin: 0 auto;
+    margin-top: 15px;
+    height: 100%;
 }
-h1, h3, h5 {
-  color:var(--dk-color);
+
+h1,
+h3,
+h5 {
+    color: var(--dk-color);
 }
-h2, h4, h6 {
-  color:var(--accent);
+
+h2,
+h4,
+h6 {
+    color: var(--accent);
 }
+
 #header {
-  max-width:850px;
-  height:90px;
-  margin-left:5px;
-  margin-right:5px;
-  margin:0 auto;
-  background-color:var(--lt-color);
-  border:1px solid var(--dkest-color);
+    max-width: 850px;
+    height: 90px;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin: 0 auto;
+    background-color: var(--lt-color);
+    border: 1px solid var(--dkest-color);
 }
+
 .title {
-  font-size:40px;
-  text-align:center;
-  font-style:italic;
+    font-size: 40px;
+    text-align: center;
+    font-style: italic;
 }
+
 #wrapper {
-  margin:0 auto;
-  max-width:860px;
+    margin: 0 auto;
+    max-width: 860px;
 }
+
 .content {
-padding:10px;
+    padding: 10px;
 }
+
 #two-boxes {
-  display:flex;
-  flex-wrap:wrap;
-  max-width:900px;
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 900px;
 }
-.box-one, .box-two {
-  border:1px solid var(--dkest-color);
-  background-color:var(--lt-color);
-  overflow:auto;
-}
-.box-one {
-  height:500px;
-  width:200px;
-  margin-left:5px;
-  margin-top:5px;
-  margin-right:5px;
-}
+
+.box-one,
 .box-two {
-  height:500px;
-  width:636px;
-  margin-left:5px;
-  margin-top:5px;
-  margin-right:5px;
+    border: 1px solid var(--dkest-color);
+    background-color: var(--lt-color);
+    overflow: auto;
 }
+
+.box-one {
+    height: 500px;
+    width: 200px;
+    margin-left: 5px;
+    margin-top: 5px;
+    margin-right: 5px;
+}
+
+.box-two {
+    height: 500px;
+    width: 636px;
+    margin-left: 5px;
+    margin-top: 5px;
+    margin-right: 5px;
+}
+
 .section-title {
-  text-align:center;
-  font-weight:bold;
-  padding-top:5px;
-  padding-bottom:5px;
-  background-color:var(--mid-color);
-  color:var(--dkest-color);
-  font-size:25px;
+    text-align: center;
+    font-weight: bold;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: var(--mid-color);
+    color: var(--dkest-color);
+    font-size: 25px;
 }
+
 .nav-wrapper {
-  display:flex;
-  flex-wrap:wrap;
-  width:400px;
-  height:50px;
-  margin:0 auto;
-  justify-content:space-evenly;
-  margin-top:5px;
+    display: flex;
+    flex-wrap: wrap;
+    width: 400px;
+    height: 50px;
+    margin: 0 auto;
+    justify-content: space-evenly;
+    margin-top: 5px;
 }
+
 button {
-  width:50%;
-  font-family: 'Courier New', monospace;
-  font-size:20px;
-  background-color:var(--mid-color);
-  color:var(--dkest-color);
-  font-weight:bold;
-  margin-top:5px;
-  margin:5px;
-  padding:5px;
-  }
+    width: 50%;
+    font-family: 'Courier New', monospace;
+    font-size: 20px;
+    background-color: var(--mid-color);
+    color: var(--dkest-color);
+    font-weight: bold;
+    margin-top: 5px;
+    margin: 5px;
+    padding: 5px;
+}
+
 button a {
- color:var(--accent);
- font-weight:bold;
+    color: var(--accent);
+    font-weight: bold;
 }
+
 p {
-  padding:5px;
+    padding: 5px;
 }
+
 p a {
-color:var(--dkest-color);
-font-weight:bold;
+    color: var(--dkest-color);
+    font-weight: bold;
 }
+
 .scroll::-webkit-scrollbar-track {
-  background-color: var(--lt-color);
+    background-color: var(--lt-color);
 }
+
 .scroll::-webkit-scrollbar {
-  width: 10px;
-  background-color: #f2b1a4;
+    width: 10px;
+    background-color: #f2b1a4;
 }
+
 .scroll::-webkit-scrollbar-thumb {
-  background-color: var(--dk-color);
+    background-color: var(--dk-color);
 }
+
 #footer {
-  text-align:center;
-  padding-top:5px;
-  margin-bottom:5px;
+    text-align: center;
+    padding-top: 5px;
+    margin-bottom: 5px;
 }
+
 #footer p {
-  background-color:white;
-  display:block;
-  margin:0 auto;
-  margin-left:5px;
-  margin-top:5px;
-  margin-right:5px;
-  margin-bottom:5px;
-
-
+    background-color: white;
+    display: block;
+    margin: 0 auto;
+    margin-left: 5px;
+    margin-top: 5px;
+    margin-right: 5px;
+    margin-bottom: 5px;
 }
+
 textarea {
-background-color:var(--dkest-color);
-color:var(--lt-color);
-font-size:20px;
+    background-color: var(--dkest-color);
+    color: var(--lt-color);
+    font-size: 20px;
 }
-@media only screen and (max-width: 75%) {
-  html, body {
-      overflow:visible;
- }
- #header {
-   width:97.6%;
- }
-  #container {
-      width:100%;
- }
-  .box-one, .box-two {
-      width:100%;
- }
- .box-two {
-   order:1;
- }
- .box-one {
-   order:2;
- }
-  .two-boxes {
-      width:100%;
- }
-  .wrapper {
-      width:100%;
- }
+
+/* Improved responsive styles for mobile/portrait */
+@media (max-width: 1079px) {
+
+    html,
+    body {
+        padding: 8px;
+        font-size: 1rem;
+        overflow-y: auto;
+    }
+
+    #container,
+    #wrapper,
+    #header,
+    #footer {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    #header {
+        height: auto;
+        min-height: 70px;
+        flex-direction: column;
+        padding: 8px 0;
+    }
+
+    .title,
+    h1.title {
+        font-size: 2em;
+        position: static;
+        transform: none;
+        left: auto;
+        text-align: center;
+        width: 100%;
+    }
+
+    #two-boxes {
+        flex-direction: column;
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .box-one,
+    .box-two {
+        width: 100%;
+        height: auto;
+        margin-left: 0;
+        margin-right: 0;
+        margin-top: 8px;
+        margin-bottom: 8px;
+    }
+
+    .nav-wrapper {
+        width: 100%;
+        height: auto;
+        flex-direction: column;
+        align-items: stretch;
+        margin-top: 8px;
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+        width: 100%;
+        font-size: 1em;
+        box-sizing: border-box;
+        margin: 8px 0;
+    }
+
+    img,
+    .gatto {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .section-title {
+        font-size: 1.2em;
+        padding: 8px 0;
+    }
 }
 
 .background-cat {
-  z-index: -1;
-  position: absolute;
-
+    z-index: -1;
+    position: absolute;
 }
 
 #header {
-  position: relative; /* Ensures absolute elements are positioned relative to this */
-  height: 90px; /* Fixed height as per your requirement */
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    position: relative;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 h1.title {
-  position: absolute;
-  width: max-content;
-  font-size: 40px;
-  text-align: center;
-  left: 50%;
-  transform: translateX(-50%); /* Centers the title */
+    position: absolute;
+    width: max-content;
+    font-size: 40px;
+    text-align: center;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .gatto {
-  position: absolute;
-  height: 90px; /* Match header height */
-  width: auto; /* Maintain aspect ratio */
+    position: absolute;
+    height: 90px;
+    width: auto;
 }
 
 .gatto.left {
-  left: 0;
+    left: 0;
 }
 
 .gatto.right {
-  right: 0;
+    right: 0;
 }
-
 
 .visualizer {
-  height: 80%;
-  width: 80%;
-  
-  min-width: 400;
-  min-height: 400;
-  top: 10%;
-  left: 10%;
+    height: 80%;
+    width: 80%;
+    min-width: 400;
+    min-height: 400;
+    top: 10%;
+    left: 10%;
 }
-
