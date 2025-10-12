@@ -23,3 +23,7 @@ services:
       - ./caddy_data:/data
     restart: unless-stopped
 ```
+
+## Desktop Version
+
+A rust, web view based version of the app (as it was originally developed) can be found on the tauri branch.
